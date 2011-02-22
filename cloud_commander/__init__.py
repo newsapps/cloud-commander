@@ -7,7 +7,7 @@ def get_version():
     d = pkg_resources.get_distribution('cloud_commander')
     return unicode(d._version)
 
-RECIPES_REPO = 'git@tribune.unfuddle.com:tribune/cloud-commander-recipes.git'
+RECIPES_REPO = 'https://github.com/newsapps/cloud-commander-recipes.git'
 
 # These constants are used to generate the config.yml for a project.
 

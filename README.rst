@@ -78,7 +78,7 @@ Run-down of the project directory
 Contributing
 ------------
 
-If you've written a recipe and bootscripts that you would like to share, simply fork ryanmark/cloud-commander-recipes on github, commit your project directory to your fork, and send me a pull request. Exactly like homebrew, if you're familiar.
+If you've written a recipe and bootscripts that you would like to share, simply fork newsapps/cloud-commander-recipes on github, commit your project directory to your fork, and send me a pull request. Exactly like homebrew, if you're familiar.
 
 Contributors
 ------------

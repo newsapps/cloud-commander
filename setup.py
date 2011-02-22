@@ -20,7 +20,7 @@ setup(
     author       = "Ryan Mark",
     author_email = "ryan@mrk.cc",
     description  = "Write recipes to bootstrap servers in the cloud.",
-    long_description = open('README.rst', 'rt').read()
+    long_description = open('README.rst', 'rt').read(),
     url          = "http://github.com/ryanmark/cloud-commander",
     license      = "MIT",
     keywords     = ['Development Status :: 3 - Alpha',

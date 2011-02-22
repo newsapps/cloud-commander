@@ -24,7 +24,7 @@ or::
 
 or::
 
-    $ git clone https://github.com/ryanmark/cloud-commander.git
+    $ git clone https://github.com/newsapps/cloud-commander.git
     $ cd cloud-commander
     $ python setup.py install
 

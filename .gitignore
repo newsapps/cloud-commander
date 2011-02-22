@@ -1,0 +1,8 @@
+*.pem
+known_hosts
+authorized_keys
+build
+dist
+_build
+*.egg-info
+*.pyc

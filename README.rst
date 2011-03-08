@@ -3,14 +3,14 @@ Cloud Commander
 
 Scripts and scripts you can use to quickly launch and build ec2 instances.
 
-The goal of this thing is to allow you to replace the specialized public AMI with a script that configures a vanilla OS installation for a specific service or task. The benefit is that a script is agnostic to the service provider.
+The goal of this thing is to allow you to replace the specialized public AMI with a script that configures a vanilla OS installation for a specific service or task. The benefit is that a script is agnostic to the service provider and you won't forget how you built the server if you wrote a script to do it.
 
 Currently Cloud Commander only supports Amazon's cloud, but the techniques should work for any provider. However, one script can configure servers in any region on Amazon's cloud, which makes it a hell of a lot more useful than a public AMI. It also allows you to launch and configure a fleet of specialized instances at the push of a button.
 
 Installation
 ------------
 
-To begin, you will need git, python and python setuptools.
+To begin, you will need git, python and setuptools.
 
 You can install Cloud Commander from pypi with ``easy_install`` or ``pip``. Or you can download the source and install it by hand. I would recommend installing to a virtualenv, although it's totally optional.
 

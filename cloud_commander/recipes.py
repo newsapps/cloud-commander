@@ -63,10 +63,28 @@ def make_recipe(settings):
             image_id=ami.id,
             key_name=settings['key_pair'],
             user_data=user_data,
-            security_groups=[settings['security_group']],
+            security_groups=[server.get('security_group', settings['security_group'])],
             instance_type=ami.size,
         )))
         
+    # First setup our status flags and EC2 tags
+    for server, reservation in reservations:
+        for instance in reservation.instances:
+            
+            # Set status flag
+            set_status(settings, instance.id)
+            
+            # Add tags to instance
+            instance.add_tag('Name', server.get('name', 'untitled'))
+            instance.add_tag('Hosts', server.get('hosts', ''))
+            instance.add_tag('Type', server.get('type', recipe_name))
+            instance.add_tag('OS', ami.os)
+            instance.add_tag('Version', ami.version)
+            instance.add_tag('Arch', ami.arch)
+            instance.add_tag('Cluster', server.get('cluster', ''))
+            
+    
+    # Monitor the booting servers, let the user know when they're running
     for server, reservation in reservations:
         for instance in reservation.instances:
             
@@ -76,27 +94,20 @@ def make_recipe(settings):
                 instance.update()
             sys.stdout.write('\r')
             
-            # Set cloud commander status
-            set_status(settings, instance.id)
-            
-            # Add tags to instance
-            instance.add_tag('Name', slugify(server.get('name', 'Not Sure')))
-            instance.add_tag('Hosts', server.get('hosts', ''))
-            instance.add_tag('Type', server.get('type', recipe_name))
-            instance.add_tag('OS', ami.os)
-            instance.add_tag('Version', ami.version)
-            instance.add_tag('Arch', ami.arch)
-            instance.add_tag('Cluster', server.get('cluster', ''))
-            
             print 'Server %s is booting. It will be available in a few minutes.' % instance.id
+
+    # Now let us know when they finish
+    for server, reservation in reservations:
+        for instance in reservation.instances:
             
             # Check cloud commander status
             while check_status(settings, instance.id):
                 draw_ascii_spinner(1)
             sys.stdout.write('\r')
-            
-            print '  ssh -l newsapps %s' % instance.public_dns_name
-    
+
+            print '%s is at attention.' % server['name']
+            print '  ssh -l USERNAME %s' % instance.public_dns_name
+
     # cleanup
     remove_assets(settings)
 

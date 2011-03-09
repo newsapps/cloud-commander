@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name    = "Cloud Commander",
-    version = "1.0alpha1",
+    version = "1.0alpha2",
 
     packages = find_packages(),
     entry_points = {
@@ -32,7 +32,7 @@ setup(
                    'Topic :: Utilities',
                    'Topic :: Internet',
                    'Topic :: System :: Installation/Setup',
-                   'Topic :: System :: Systems Administration',
+                   'Topic :: System :: Systems Administration'
                    ],
 )
 

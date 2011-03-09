@@ -14,7 +14,7 @@ def execute_from_command_line():
                               first time, use "%(prog)s setup PROJECT_NAME". I'll create
                               a new project in directory PROJECT_NAME."""
     
-    parser = argparse.ArgumentParser(usage="%(prog)s [options] start|setup [RECIPE]",
+    parser = argparse.ArgumentParser(usage="%(prog)s [options] start|setup RECIPE|PROJECT_NAME",
                                      description=commands_description)
     parser.add_argument("-k", "--access-key", dest="access_key",
                         help="Your AWS access key")

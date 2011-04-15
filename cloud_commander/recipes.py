@@ -67,13 +67,13 @@ def make_recipe(settings):
             instance_type=ami.size,
         )))
         
-    # First setup our status flags and EC2 tags
+    # First setup our status flag and EC2 tags
     for server, reservation in reservations:
         for instance in reservation.instances:
             
             # Set status flag
             set_status(settings, instance.id)
-            
+
             # Add tags to instance
             instance.add_tag('Name', server.get('name', 'untitled'))
             instance.add_tag('Hosts', server.get('hosts', ''))
